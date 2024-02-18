@@ -1,13 +1,23 @@
+import { cn } from "@/utils/cn";
 
-const Head = () => {
+
+interface HeadProps{
+  title : string;
+  titleClass : string;
+}
+
+const Head:React.FC<HeadProps> = ({
+  title,
+  titleClass
+}) => {
   return (
     <div>
       
-      <span className="inline-block text-base font-DanaRegular pb-2" >
-        لطفا اطلاعات شخصی مالک خودرو را وارد کنید:
+      <span className={cn("inline-block  pb-2",titleClass)} >
+        {title}
       </span>
 
-      <hr className="bg-custm-gray-100" />
+      <hr className="bg-custm-zinc-200" />
     </div>
   )
 }

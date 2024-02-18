@@ -13,27 +13,29 @@ const config: Config = {
         DanaMedium: "DanaMedium",
         DanaRegular: "DanaRegular",
       },
-      colors:{
-        'custm-yellow': {
-          DEFAULT: '#FFC453',
+      colors: {
+        "custm-yellow": {
+          DEFAULT: "#FFC453",
         },
-        'custm-green': {
-          DEFAULT: '#34A862',
+        "custm-green": {
+          DEFAULT: "#34A862",
         },
-        'custm-gray': {
-          100: '#E0E0E0',
-          DEFAULT: '#C2C2C2',
+        "custm-zinc": {
+          200: "#E0E0E0",
+          DEFAULT: "#C2C2C2",
+          500: "#B4B4B4",
+          700 :"#757575",
         },
-        'custm-red': {
-          DEFAULT: '#E61F10',
+        "custm-red": {
+          DEFAULT: "#E61F10",
         },
       },
       padding: {
-        '14px': '14px',
+        "14px": "14px",
       },
       boxShadow: {
-        'sm': '0px 3px 15px 3px #2222221A',
-      }
+        sm: "0px 3px 15px 3px #2222221A",
+      },
     },
   },
   plugins: [],
