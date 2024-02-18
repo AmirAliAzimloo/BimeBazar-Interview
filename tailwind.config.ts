@@ -7,7 +7,28 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        DanaBold: "DanaBold",
+        DanaMedium: "DanaMedium",
+        DanaRegular: "DanaRegular",
+      },
+      colors:{
+        'custm-yellow': {
+          DEFAULT: '#FFC453',
+        },
+        'custm-green': {
+          DEFAULT: '#34A862',
+        },
+        'custm-gray': {
+          100: '#E0E0E0',
+          DEFAULT: '#C2C2C2',
+        },
+        'custm-red': {
+          DEFAULT: '#E61F10',
+        },
+      }
+    },
   },
   plugins: [],
 };

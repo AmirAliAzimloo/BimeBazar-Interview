@@ -2,16 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-:root {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base{
+
+  html,
+  body,
+  :root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: "DanaBold";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/assets/fonts/Dana/woff2/DanaFaNum-DemiBold.woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "DanaMedium";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/assets/fonts/Dana/woff2/DanaFaNum-Medium.woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "DanaRegular";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Dana/woff2/DanaFaNum-Medium.woff2");
+    font-display: swap;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
