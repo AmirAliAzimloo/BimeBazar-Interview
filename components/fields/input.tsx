@@ -41,7 +41,7 @@ const Input: React.FC<InputProps> = ({
           text-sm
           placeholder:text-custm-zinc-700
           `,
-            errors?.[id] && "focus:ring-rose-500",
+            errors?.[id] && "border-custm-red",
             errors?.[id] && "ring-rose-500",
             disabled && "opacity-50 cursor-default"
           )}
@@ -50,9 +50,9 @@ const Input: React.FC<InputProps> = ({
         {errors?.[id] && (
           <div
             className={cn(
-              "block text-sm font-medium leading-6 text-gray-900",
-              errors?.[id] && "text-rose-500",
-              disabled && "opacity-50 cursor-default"
+              "block text-xs font-DanaMedium text-black mt-1",
+              errors?.[id] && "text-custm-red",
+              disabled && "opacity-50 "
             )}
           >
             {(errors as Record<string, any>)[id]?.message}
