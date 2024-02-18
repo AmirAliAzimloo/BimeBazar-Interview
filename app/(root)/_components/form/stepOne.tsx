@@ -97,9 +97,7 @@ const StepOne = () => {
           </Button>
         </div>
       </form>
-      {
-        showAddresses && (<AddressList onClose={()=>setShowAddresses(false)}  />)
-      }
+      {showAddresses && <AddressList onClose={() => setShowAddresses(false)} />}
     </>
   );
 };

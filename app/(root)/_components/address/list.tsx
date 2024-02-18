@@ -1,21 +1,26 @@
-import Sheet from "@/components/ui/sheet"
+import Sheet from "@/components/ui/sheet";
+import Wrapper from "@/components/ui/wrapper";
 
-interface AddressListProps{
-  onClose : (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-
+interface AddressListProps {
+  onClose: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-const AddressList : React.FC< AddressListProps > = ({onClose}) => {
+const AddressList: React.FC<AddressListProps> = ({ onClose }) => {
   return (
     <Sheet
-    position="bottom"
-    onClose={onClose}
+      position="bottom"
+      onClose={onClose}
+      headerTitle="انتخاب آدرس"
+      btntitle="انتخاب"
     >
-      <div>
-        test
-      </div>
+      <div className="w-full h-[110px]">sdsd</div>
+      <div className="w-full h-[110px]">sdsd</div>
+      <div className="w-full h-[110px]">sdsd</div>
+      <div className="w-full h-[110px]">sdsd</div>
+      <div className="w-full h-[110px]">sdsd</div>
+      <div className="w-full h-[110px] ">sdsd</div>
     </Sheet>
-  )
-}
+  );
+};
 
-export default AddressList
+export default AddressList;

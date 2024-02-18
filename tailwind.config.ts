@@ -29,6 +29,9 @@ const config: Config = {
         "custm-red": {
           DEFAULT: "#E61F10",
         },
+        "overlay": {
+          DEFAULT: "#0000007D",
+        },
       },
       padding: {
         "14px": "14px",
@@ -36,6 +39,9 @@ const config: Config = {
       boxShadow: {
         sm: "0px 3px 15px 3px #2222221A",
       },
+      backdropBlur: {
+        xs: '1px',
+      }
     },
   },
   plugins: [],
