@@ -27,6 +27,12 @@ const config: Config = {
         'custm-red': {
           DEFAULT: '#E61F10',
         },
+      },
+      padding: {
+        '14px': '14px',
+      },
+      boxShadow: {
+        'sm': '0px 3px 15px 3px #2222221A',
       }
     },
   },
