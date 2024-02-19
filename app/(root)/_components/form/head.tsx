@@ -13,9 +13,9 @@ const Head:React.FC<HeadProps> = ({
   return (
     <div>
       
-      <span className={cn("inline-block  pb-2",titleClass)} >
+      <h3 className={cn("pb-2",titleClass)} >
         {title}
-      </span>
+      </h3>
 
       <hr className="bg-custom-zinc-200" />
     </div>

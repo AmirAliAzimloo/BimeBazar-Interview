@@ -30,7 +30,7 @@ interface StepOneProps {
   errors?: FieldErrors;
   handleSubmit: UseFormHandleSubmit<any>;
   setValue: UseFormSetValue<any>;
-  watch : UseFormWatch<any>;
+  watch: UseFormWatch<any>;
 }
 
 const StepOne: React.FC<StepOneProps> = ({
@@ -39,7 +39,7 @@ const StepOne: React.FC<StepOneProps> = ({
   errors,
   handleSubmit,
   setValue,
-  watch
+  watch,
 }) => {
   //* react states
   const [showAddresses, setShowAddresses] = useState(false);
@@ -64,7 +64,6 @@ const StepOne: React.FC<StepOneProps> = ({
     yup.InferType<typeof completionSchema>
   > = async (formData) => {
     try {
-      console.log(formData);
       if (!formData.addressId?.[0]?.name) {
         toast.error("آدرس را انتخاب کنید");
         return;
