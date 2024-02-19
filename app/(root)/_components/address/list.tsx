@@ -48,7 +48,7 @@ const AddressList: React.FC<AddressListProps> = ({ onClose, setValue }) => {
     >
       {isLoading && <Loader />}
       {isSuccess && (
-        <div className="flex flex-col gap-4 pt-5">
+        <div className="flex flex-col gap-4 pt-5 pb-2">
           {addresses.ids.map((addressId: number, index: number) => (
             <SingleAddress key={index} id={addressId} />
           ))}

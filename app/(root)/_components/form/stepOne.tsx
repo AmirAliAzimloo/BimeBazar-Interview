@@ -2,9 +2,16 @@
 
 //* pakages
 import * as yup from "yup";
-import { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Dispatch, SetStateAction, useState } from "react";
+import {
+  FieldErrors,
+  SubmitHandler,
+  UseFormHandleSubmit,
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+  useForm,
+} from "react-hook-form";
 import toast from "react-hot-toast";
 
 //* locales
@@ -14,33 +21,33 @@ import { completionSchema } from "@/schemas/order";
 import Button from "@/components/fields/button";
 import AddressList from "../address/list";
 import { useAddnewOrderMutation } from "@/libs/redux/features/services/order";
+import handelErrors from "@/utils/handelErrors";
+import { rtkErrors } from "@/types";
 
-const StepOne = () => {
+interface StepOneProps {
+  setStep: Dispatch<SetStateAction<number>>;
+  register: UseFormRegister<any>;
+  errors?: FieldErrors;
+  handleSubmit: UseFormHandleSubmit<any>;
+  setValue: UseFormSetValue<any>;
+  watch : UseFormWatch<any>;
+}
+
+const StepOne: React.FC<StepOneProps> = ({
+  setStep,
+  register,
+  errors,
+  handleSubmit,
+  setValue,
+  watch
+}) => {
   //* react states
   const [showAddresses, setShowAddresses] = useState(false);
-
-  const [addnewOrder,{ isLoading }] = useAddnewOrderMutation();
 
   //! close address sheet
   const handelClose = () => {
     setShowAddresses(false);
   };
-
-  //* base form
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm<yup.InferType<typeof completionSchema>>({
-    defaultValues: {
-      nationalId: "",
-      phoneNumber: "",
-      addressId: [],
-    },
-    resolver: yupResolver(completionSchema),
-  });
 
   //* watch form values
   const nationalIdWatch = watch("nationalId");
@@ -48,6 +55,11 @@ const StepOne = () => {
   const addressIdWatch = watch("addressId");
 
   //! post data to back end
+
+  //? rtk for post data
+  const [addnewOrder, { isLoading }] = useAddnewOrderMutation();
+
+  //? func for submit form
   const onSubmit: SubmitHandler<
     yup.InferType<typeof completionSchema>
   > = async (formData) => {
@@ -64,16 +76,24 @@ const StepOne = () => {
         addressId: formData.addressId?.[0]?.id,
       }).unwrap();
 
-      toast.success('سفارش با موفقیت ثبت شد')
-
-
+      toast.success("سفارش با موفقیت ثبت شد");
+      setStep(2);
     } catch (error) {
-      console.log(error);
+      if ((error as rtkErrors)?.data?.errors?.length > 0) {
+        handelErrors((error as rtkErrors).data.errors);
+      } else {
+        console.log(error);
+      }
     }
   };
 
   return (
     <>
+      <Head
+        title="لطفا اطلاعات شخصی مالک خودرو را وارد کنید:"
+        titleClass="text-base font-DanaRegular "
+      />
+
       <form className="pt-4 pb-8 " onSubmit={handleSubmit(onSubmit)}>
         {/* //! - ! pohone & national_code */}
         <div className="flex flex-col gap-7">
@@ -101,11 +121,11 @@ const StepOne = () => {
         <div className="mt-8">
           <Head
             title="آدرس جهت درج روی بیمه نامه"
-            titleClass="font-DanaBold text-lg"
+            titleClass="font-DanaBold text-base/[21.2px]"
           />
           {!!addressIdWatch?.[0]?.name ? (
             <>
-              <h4 className="font-DanaMedium text-sm/[21.46px]">
+              <h4 className="font-DanaMedium text-sm/[21.46px] pt-4">
                 {addressIdWatch?.[0]?.name}
               </h4>
             </>
