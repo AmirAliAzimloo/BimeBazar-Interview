@@ -6,9 +6,10 @@ import Button from "../fields/button";
 interface SheetProps {
   children: React.ReactNode;
   position: "bottom" | "top" | "left" | "right";
-  onClose: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onClose:  () => void;
   headerTitle: string;
   btntitle: string;
+  btnAction:()=>void;
 }
 
 const Sheet: React.FC<SheetProps> = ({
@@ -17,6 +18,7 @@ const Sheet: React.FC<SheetProps> = ({
   onClose,
   headerTitle,
   btntitle,
+  btnAction
 }) => {
   return (
     <>
@@ -60,7 +62,7 @@ const Sheet: React.FC<SheetProps> = ({
           <div className="px-5 overflow-y-auto flex-1 ">{children}</div>
           {/* footer */}
           <div className="p-5 shadow-sm self-end w-full ">
-            <Button fullWidth>{btntitle}</Button>
+            <Button onClick={btnAction} fullWidth>{btntitle}</Button>
           </div>
         </div>
       </div>

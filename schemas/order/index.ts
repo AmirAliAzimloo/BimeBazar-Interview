@@ -22,5 +22,5 @@ export const completionSchema = yup.object({
     .min(10, "کم تر از 10 کاراکتر صحیح نمی باشد")
     .max(11, "بیشتر از 11 کاراکتر صحیح نمی باشد")
     .matches(/^(?:0|(?:(?:(?!\+98|98)[0-9]{2})))?9[0-9]{9}$/, "فرمت را صحیح وارد کنید"),
-  addressId: yup.string(),
+  addressId: yup.array(),
 });

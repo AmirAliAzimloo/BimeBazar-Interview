@@ -1,7 +1,7 @@
 "use client";
 
 interface OverlayProps {
-  onClose: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onClose: () => void;
 }
 
 const Overlay: React.FC<OverlayProps> = ({ onClose }) => {

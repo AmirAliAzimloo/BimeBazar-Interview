@@ -9,6 +9,7 @@ interface InputProps {
   register: UseFormRegister<any>;
   disabled: boolean;
   placeholder: string;
+  value : string | number | []
 }
 
 const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   register,
   disabled,
   placeholder,
+  value
 }) => {
   return (
     <>
@@ -45,6 +47,7 @@ const Input: React.FC<InputProps> = ({
             errors?.[id] && "ring-rose-500",
             disabled && "opacity-50 cursor-default"
           )}
+          value={value}
         />
 
         {errors?.[id] && (
