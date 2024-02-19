@@ -84,7 +84,7 @@ const StepOne = () => {
           <Button
             fullWidth
             type="button"
-            className="bg-custm-yellow text-black"
+            className="bg-custom-yellow text-black"
             onClick={() => setShowAddresses(true)}
           >
             انتخاب از آدرس های من

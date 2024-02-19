@@ -33,25 +33,36 @@ const Sheet: React.FC<SheetProps> = ({
           position == "bottom" && "bottom-0 right-0 left-0"
         )}
       >
-        {/* header */}
-        <div className="flex items-center justify-between pt-6 pb-3 px-5">
-          <h3 className=" font-DanaBold text-lg">{headerTitle}</h3>
-          <div onClick={onClose} className="w-6 h-6 text-custm-zinc ">
-            <CloseIcon />
+        <div
+          className="
+        flex
+        flex-col
+        justify-between
+        overflow-y-auto
+        h-full
+        "
+        >
+          {/* header */}
+          <div>
+
+          <div className="flex items-center justify-between pt-6 pb-3 px-5">
+            <h3 className=" font-DanaBold text-lg">{headerTitle}</h3>
+            <div onClick={onClose} className="w-6 h-6 text-custom-zinc ">
+              <CloseIcon />
+            </div>
+          </div>
+          
+          <hr />
+          </div>
+
+
+          {/* content */}
+          <div className="px-5 overflow-y-auto flex-1 ">{children}</div>
+          {/* footer */}
+          <div className="p-5 shadow-sm self-end w-full ">
+            <Button fullWidth>{btntitle}</Button>
           </div>
         </div>
-
-        <hr />
-
-        {/* content */}
-        <div className="px-5 overflow-y-auto " >
-         
-        {children}
-        </div>
-        {/* footer */}
-          <div className="p-5 shadow-sm fixed right-0 left-0 bottom-0 ">
-          <Button fullWidth>{btntitle}</Button>
-          </div>
       </div>
       <Overlay onClose={onClose} />
     </>

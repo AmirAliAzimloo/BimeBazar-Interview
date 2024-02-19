@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = ({
           className={cn(
             `
           border
-          border-custm-zinc-500
+          border-custom-zinc-500
           outline-none
           form-input
           block
@@ -39,9 +39,9 @@ const Input: React.FC<InputProps> = ({
           p-3
           font-DanaMedium
           text-sm
-          placeholder:text-custm-zinc-700
+          placeholder:text-custom-zinc-700
           `,
-            errors?.[id] && "border-custm-red",
+            errors?.[id] && "border-custom-red",
             errors?.[id] && "ring-rose-500",
             disabled && "opacity-50 cursor-default"
           )}
@@ -51,7 +51,7 @@ const Input: React.FC<InputProps> = ({
           <div
             className={cn(
               "block text-xs font-DanaMedium text-black mt-1",
-              errors?.[id] && "text-custm-red",
+              errors?.[id] && "text-custom-red",
               disabled && "opacity-50 "
             )}
           >
