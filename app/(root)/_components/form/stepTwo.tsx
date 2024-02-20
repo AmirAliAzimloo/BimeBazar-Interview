@@ -1,14 +1,14 @@
 import Button from "@/components/fields/button";
-import { Dispatch, SetStateAction } from "react";
+import { setStateType } from "@/types/react";
 
 interface StepTwoProps {
-  setStep: Dispatch<SetStateAction<number>>;
+  setStep: setStateType<number>;
 }
 
 const StepTwo: React.FC<StepTwoProps> = ({ setStep }) => {
   return (
     <div className="min-h-[347px] flex flex-col justify-between" >
-      <h2 className="text-custom-green font-DanaBold text-xl/[34px]">
+      <h2 className="text-green-500 font-DanaBold text-xl/[34px]">
         اطلاعات شما با موفقیت ثبت شد.
       </h2>
 

@@ -35,7 +35,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
           form-radio
         bg-gray-100 
         border-2
-        border-custom-zinc  
+        border-zinc  
         "
         />
         <label

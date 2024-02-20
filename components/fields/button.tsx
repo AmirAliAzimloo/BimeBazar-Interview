@@ -4,11 +4,13 @@ import React from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import { cn } from "@/utils/cn";
+import { voidFuncType } from "@/types";
+import { btnType } from "@/types/fields";
 
 interface ButtonProps {
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: btnType;
   children?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: voidFuncType;
   disabled?: boolean;
   className?: string;
   fullWidth?:boolean;

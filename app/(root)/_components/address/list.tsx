@@ -1,15 +1,20 @@
 "use client";
-import { UseFormSetValue } from "react-hook-form";
+//* pakages
+import toast from "react-hot-toast";
 
+
+//* locales
+import SingleAddress from "./single";
 import Loader from "@/components/ui/loader";
 import Sheet from "@/components/ui/sheet";
 import { useGetAddressesQuery } from "@/libs/redux/features/services/address";
-import SingleAddress from "./single";
-import toast from "react-hot-toast";
+import { setValueType } from "@/types/form";
+import messages from "@/common/messages";
+import { voidFuncType } from "@/types";
 
 interface AddressListProps {
-  onClose: () => void;
-  setValue: UseFormSetValue<any>;
+  onClose: voidFuncType;
+  setValue: setValueType<any>;
 }
 
 const AddressList: React.FC<AddressListProps> = ({ onClose, setValue }) => {
@@ -22,17 +27,20 @@ const AddressList: React.FC<AddressListProps> = ({ onClose, setValue }) => {
   } = useGetAddressesQuery();
 
 
+  //* validate & set address
   const btnAction = () => {
     if (isSuccess) {
       const checkedAddress = Object.values(addresses.entities).find(
         (address) => address.checked
       );
       if (!!checkedAddress) {
-        setValue("addressId", [{name : checkedAddress.name , id : checkedAddress.id}]);
-        toast.success("آدرس با موفقیت انتخاب شد");
+        setValue("addressId", [
+          { name: checkedAddress.name, id: checkedAddress.id },
+        ]);
+        toast.success(messages.address.success);
         onClose();
       } else {
-        toast.error("لطفا آدرس را انتخاب کنید");
+        toast.error(messages.address.error);
         return;
       }
     }
@@ -54,7 +62,11 @@ const AddressList: React.FC<AddressListProps> = ({ onClose, setValue }) => {
           ))}
         </div>
       )}
-      {isError && <p>{"لطفا دوباره تلاش کنید"}</p>}
+      {isError && (
+        <h4 className="text-xs font-DanaMedium h-full flex items-center justify-center  text-red-600">
+          {"لطفا دوباره تلاش کنید"}
+        </h4>
+      )}
     </Sheet>
   );
 };

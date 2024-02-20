@@ -5,4 +5,8 @@ export interface AddressInterface {
   checked?: boolean;
 }
 
-export type rtkErrors = { status: number; data: { errors: string[] } };
+//* sheet
+export type sheetType = "bottom" | "top" | "left" | "right" ;
+
+//* utils
+export type voidFuncType = ()=>void;

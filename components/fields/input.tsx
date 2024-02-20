@@ -1,12 +1,13 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { cn } from "@/utils/cn";
+import { registerType } from "@/types/form";
 
 interface InputProps {
   id: string;
   errors?: FieldErrors;
   type: string;
-  register: UseFormRegister<any>;
+  register: registerType<any>;
   disabled: boolean;
   placeholder: string;
   value : string | number | []
@@ -33,7 +34,7 @@ const Input: React.FC<InputProps> = ({
           className={cn(
             `
           border
-          border-custom-zinc-500
+          border-zinc-500
           outline-none
           form-input
           block
@@ -41,9 +42,9 @@ const Input: React.FC<InputProps> = ({
           p-3
           font-DanaMedium
           text-sm
-          placeholder:text-custom-zinc-700
+          placeholder:text-zinc-700
           `,
-            errors?.[id] && "border-custom-red",
+            errors?.[id] && "border-red-600",
             errors?.[id] && "ring-rose-500",
             disabled && "opacity-50 cursor-default"
           )}
@@ -51,15 +52,15 @@ const Input: React.FC<InputProps> = ({
         />
 
         {errors?.[id] && (
-          <div
+          <span
             className={cn(
               "block text-xs font-DanaMedium text-black mt-1",
-              errors?.[id] && "text-custom-red",
+              errors?.[id] && "text-red-600",
               disabled && "opacity-50 "
             )}
           >
             {(errors as Record<string, any>)[id]?.message}
-          </div>
+          </span>
         )}
       </div>
     </>

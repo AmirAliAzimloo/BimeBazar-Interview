@@ -92,7 +92,7 @@ const SingleAddress: React.FC<SingleAddressProps> = ({ id }) => {
         <p
         className="
         font-DanaRegular
-        text-custom-zinc-700
+        text-zinc-700
         text-xs/[18.19px]
         mr-[36px]
         "

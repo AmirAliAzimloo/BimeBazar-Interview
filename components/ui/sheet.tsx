@@ -2,14 +2,15 @@ import { cn } from "@/utils/cn";
 import Overlay from "./overLay";
 import CloseIcon from "./icons/close";
 import Button from "../fields/button";
+import { sheetType, voidFuncType } from "@/types";
 
 interface SheetProps {
   children: React.ReactNode;
-  position: "bottom" | "top" | "left" | "right";
-  onClose:  () => void;
+  position: sheetType;
+  onClose:  voidFuncType;
   headerTitle: string;
   btntitle: string;
-  btnAction:()=>void;
+  btnAction:voidFuncType;
 }
 
 const Sheet: React.FC<SheetProps> = ({
@@ -49,7 +50,7 @@ const Sheet: React.FC<SheetProps> = ({
 
           <div className="flex items-center justify-between pt-6 pb-3 px-5">
             <h3 className=" font-DanaBold text-lg">{headerTitle}</h3>
-            <div onClick={onClose} className="w-6 h-6 text-custom-zinc ">
+            <div onClick={onClose} className="w-6 h-6 text-zinc ">
               <CloseIcon />
             </div>
           </div>

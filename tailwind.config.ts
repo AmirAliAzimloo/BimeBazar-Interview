@@ -14,20 +14,20 @@ const config: Config = {
         DanaRegular: "DanaRegular",
       },
       colors: {
-        "custom-yellow": {
-          DEFAULT: "#FFC453",
+        "amber": {
+          400: "#FFC453",
         },
-        "custom-green": {
-          DEFAULT: "#34A862",
+        "green": {
+          500: "#34A862",
         },
-        "custom-zinc": {
+        "zinc": {
           200: "#E0E0E0",
           DEFAULT: "#C2C2C2",
           500: "#B4B4B4",
           700 :"#757575",
         },
-        "custom-red": {
-          DEFAULT: "#E61F10",
+        "red": {
+          600: "#E61F10",
         },
         "overlay": {
           DEFAULT: "#0000007D",

@@ -1,11 +1,12 @@
 import * as yup from "yup";
 
 import validateNationalCode from "@/utils/validateNationalCode";
+import errors from "@/common/errors";
 
-export const completionSchema = yup.object({
+export const completionOrderSchema = yup.object({
   nationalId: yup
     .string()
-    .required("این قسمت نمی تواند خالی باشد")
+    .required(errors.required)
     .test({
       name: "national_code_regex",
       test: function (value: any) {
@@ -14,13 +15,13 @@ export const completionSchema = yup.object({
         }
         return true;
       },
-      message: "کد ملی وارد شده معتبر نیست",
+      message: errors.nationalId,
     }),
   phoneNumber: yup
     .string()
-    .required("این قسمت نمی تواند خالی باشد")
-    .min(10, "کم تر از 10 کاراکتر صحیح نمی باشد")
-    .max(11, "بیشتر از 11 کاراکتر صحیح نمی باشد")
-    .matches(/^(?:0|(?:(?:(?!\+98|98)[0-9]{2})))?9[0-9]{9}$/, "فرمت را صحیح وارد کنید"),
+    .required(errors.required)
+    .min(10, errors.phoneNumber.min)
+    .max(11, errors.phoneNumber.max)
+    .matches(/^(?:0|(?:(?:(?!\+98|98)[0-9]{2})))?9[0-9]{9}$/, errors.phoneNumber.format),
   addressId: yup.array(),
 });

@@ -1,16 +1,17 @@
 "use client";
+//* pakages
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Wrapper from "@/components/ui/wrapper";
+//* locales
 import StepOne from "./stepOne";
 import StepTwo from "./stepTwo";
-import { completionSchema } from "@/schemas/order";
+import { completionOrderSchema } from "@/schemas/order";
+import { resolverType } from "@/types/form";
 
 const Form = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState<number>(1);
 
   //* base form
   const {
@@ -19,17 +20,17 @@ const Form = () => {
     watch,
     setValue,
     formState: { errors },
-  } = useForm<yup.InferType<typeof completionSchema>>({
+  } = useForm< resolverType<typeof completionOrderSchema> >({
     defaultValues: {
       nationalId: "",
       phoneNumber: "",
       addressId: [],
     },
-    resolver: yupResolver(completionSchema),
+    resolver: yupResolver(completionOrderSchema),
   });
 
   return (
-    <Wrapper className="py-8">
+    <>
       {step == 1 ? (
         <StepOne
           setStep={setStep}
@@ -41,7 +42,7 @@ const Form = () => {
         />
       ) : null}
       {step == 2 ? <StepTwo setStep={setStep} /> : null}
-    </Wrapper>
+    </>
   );
 };
 

@@ -1,36 +1,33 @@
 "use client";
 
 //* pakages
-import * as yup from "yup";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import {
   FieldErrors,
   SubmitHandler,
-  UseFormHandleSubmit,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormWatch,
-  useForm,
 } from "react-hook-form";
 import toast from "react-hot-toast";
 
 //* locales
 import Head from "./head";
 import Input from "@/components/fields/input";
-import { completionSchema } from "@/schemas/order";
+import { completionOrderSchema } from "@/schemas/order";
 import Button from "@/components/fields/button";
 import AddressList from "../address/list";
 import { useAddnewOrderMutation } from "@/libs/redux/features/services/order";
 import handelErrors from "@/utils/handelErrors";
-import { rtkErrors } from "@/types";
+import messages from "@/common/messages";
+import { registerType, resolverType, setValueType, submitType, watchType } from "@/types/form";
+import { rtkErrors } from "@/types/redux";
+import { setStateType } from "@/types/react";
 
 interface StepOneProps {
-  setStep: Dispatch<SetStateAction<number>>;
-  register: UseFormRegister<any>;
+  setStep: setStateType<number>;
+  register: registerType<any>;
   errors?: FieldErrors;
-  handleSubmit: UseFormHandleSubmit<any>;
-  setValue: UseFormSetValue<any>;
-  watch: UseFormWatch<any>;
+  handleSubmit: submitType<any>;
+  setValue: setValueType<any>;
+  watch: watchType<any>;
 }
 
 const StepOne: React.FC<StepOneProps> = ({
@@ -61,11 +58,11 @@ const StepOne: React.FC<StepOneProps> = ({
 
   //? func for submit form
   const onSubmit: SubmitHandler<
-    yup.InferType<typeof completionSchema>
+    resolverType<typeof completionOrderSchema>
   > = async (formData) => {
     try {
       if (!formData.addressId?.[0]?.name) {
-        toast.error("آدرس را انتخاب کنید");
+        toast.error(messages.address.error);
         return;
       }
 
@@ -75,7 +72,7 @@ const StepOne: React.FC<StepOneProps> = ({
         addressId: formData.addressId?.[0]?.id,
       }).unwrap();
 
-      toast.success("سفارش با موفقیت ثبت شد");
+      toast.success(messages.order.success);
       setStep(2);
     } catch (error) {
       if ((error as rtkErrors)?.data?.errors?.length > 0) {
@@ -137,7 +134,7 @@ const StepOne: React.FC<StepOneProps> = ({
               <Button
                 fullWidth
                 type="button"
-                className="bg-custom-yellow text-black"
+                className="bg-amber-400 text-black"
                 onClick={() => setShowAddresses(true)}
               >
                 انتخاب از آدرس های من

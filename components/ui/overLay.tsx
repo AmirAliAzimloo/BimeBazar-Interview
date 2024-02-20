@@ -1,7 +1,9 @@
 "use client";
 
+import { voidFuncType } from "@/types";
+
 interface OverlayProps {
-  onClose: () => void;
+  onClose: voidFuncType;
 }
 
 const Overlay: React.FC<OverlayProps> = ({ onClose }) => {

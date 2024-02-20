@@ -17,7 +17,7 @@ const Head:React.FC<HeadProps> = ({
         {title}
       </h3>
 
-      <hr className="bg-custom-zinc-200" />
+      <hr className="bg-zinc-200" />
     </div>
   )
 }
